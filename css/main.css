@@ -41,6 +41,7 @@ body{
 *{
     box-sizing: border-box;
 }
+/* Uc-1 Forms */
 .form-content {
     display: flex;
     align-items: center;
@@ -81,4 +82,18 @@ input{
     padding: 12px;
     border: 1px solid gray;
     
+}
+/* Uc-2 radio buttons  */
+.radio-content{
+    display: flex;
+    flex-direction: row;
+}
+.radio-content>label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 6px;
+}
+.radio-img{
+    height: 40px;
 }
