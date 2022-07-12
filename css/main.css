@@ -12,16 +12,20 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 0px solid rebeccapurple;
+    border: 0px solid darkblue;
 }
 .logo-content{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     border: 0px solid green;
     padding-left: 5px;
-    width: 80%;
+    width: 20%;
     
+}
+.logo-content img{
+    border: 0px solid navy;
 }
 
 .emp-text{
@@ -36,4 +40,45 @@ body{
 }
 *{
     box-sizing: border-box;
+}
+.form-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.form{
+    border: 0px solid red;
+    width: 60%;
+    padding: 60px 70px;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    opacity: 1;
+}
+.form-head{
+    font: normal normal bold 20px/25px Robotto;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(93 103 104);
+    text-transform: capitalize;
+}
+.row-content{
+    display: flex;
+    align-content: center;
+    margin: 10px;
+    border: 0px solid blue;
+}
+.label{
+    min-width: 140px;
+    font-size: 16px;
+    opacity: 1;
+    font-family: 'Roboto';
+    font-size: 16px;
+    padding: 12px 12px 12px 0;
+}
+input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid gray;
+    
 }
