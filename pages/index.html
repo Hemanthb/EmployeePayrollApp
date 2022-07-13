@@ -6,7 +6,7 @@
     <title>Employee Payroll</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='..\css\main.css'>
-    <script src='main.js'></script>
+    <script src='../js/main.js'></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100&display=swap" rel="stylesheet">
 </head>
@@ -54,6 +54,50 @@
                     </label>
                 </div>
             </div>
+            <div class="row-content">
+                <label class="label" for="gender">Gender</label>
+                <div class="gender-content">
+                    <div class="section">
+                        <input type="radio" id="male" name="male" value="male" required>
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="section">
+                        <input type="radio" id="female" name="female" value="female" required>
+                        <label for="female">Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row-content">
+                <label class="label" for="department">Department</label>
+                <div class="department-content">
+                    <div class="section">
+                        <input class="checkbox" type="checkbox" id="hr" name="hr" value="HR">
+                        <label for="hr">HR</label>
+                    </div>
+                    <div class="section">
+                        <input class="checkbox" type="checkbox" id="sales" name="sales" value="Sales">
+                        <label for="sales">Sales</label>
+                    </div>
+                    <div class="section">
+                        <input class="checkbox" type="checkbox" id="finance" name="finance" value="Finance">
+                        <label for="finance">Finance</label>
+                    </div>
+                    <div class="section">
+                        <input class="checkbox" type="checkbox" id="engineer" name="engineer" value="Engineer">
+                        <label for="engineer">Engineer</label>
+                    </div>
+                    <div class="section">
+                        <input class="checkbox" type="checkbox" id="others" name="others" value="Others">
+                        <label for="others">Others</label>
+                    </div>
+                </div> 
+            </div>
+            <div class="row-content">
+                <label class="label" for="salary">Salary</label>
+                <input type="range" id="salary" name="salary" min="10000" max="100000" step="1000" value="50000" onchange="ShowValue(this.value)">
+                <output class="salary-output label" id="slider-value" for="salary">50000</output>
+            </div>
+
         </form>
     </div>
 </body>

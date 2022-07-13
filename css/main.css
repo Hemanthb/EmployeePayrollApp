@@ -41,7 +41,7 @@ body{
 *{
     box-sizing: border-box;
 }
-/* Uc-1 Forms */
+/* Uc-2 Forms */
 .form-content {
     display: flex;
     align-items: center;
@@ -83,7 +83,7 @@ input{
     border: 1px solid gray;
     
 }
-/* Uc-2 radio buttons  */
+/* Uc-3 radio buttons  */
 .radio-content{
     display: flex;
     flex-direction: row;
@@ -96,4 +96,35 @@ input{
 }
 .radio-img{
     height: 40px;
+}
+
+.gender-content{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+.gender-content>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 6px;
+    gap:5px;
+}
+
+.department-content{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+.department-content>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 6px;
+    gap:2px;
+}
+#salary{
+    width: 100%;
+    color: darkgrey;
+    padding: 0;
 }
