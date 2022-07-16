@@ -1,87 +1,41 @@
-function ShowValue(x)
-{
-    document.getElementById("slider-value").innerHTML=x;
-}
-
-{
-    class EmployeePayroll
+window.addEventListener('DOMContentLoaded',(event) => {
+    const name = document.querySelector('#name');
+    const message = document.querySelector('.text-error');
+    name.addEventListener('input', function(){
+    if(name.value.length == 0)
     {
-        get id(){
-            return this._id;
-        }
-        set id(id){
-            this._id = id;
-        }
-    
-        get name() 
-        {
-            return this._name;
-        }
-        set name(name)
-        {
-            let checkName = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$')
-                if(checkName.test(name)){
-                    this._name = name;
-            }
-            else{
-                throw "Invalid Name - Min length:3 & start with a capital";
-            }
-        }
-    
-        get profilePic(){
-            return this._profilePic;
-        }
-        set profilePic(profilePic){
-            this._profilePic = profilePic;
-        }
-    
-        get gender(){
-            return this._gender;
-        }
-        set gender(gender){
-            this._gender = gender;
-        }
-    
-        get department(){
-            return this._department;
-        }
-        set department(department){
-            this._department = department;
-        }
-    
-        get salary(){
-            return this._salary;
-        }
-        set salary(salary){
-            this._salary = salary;
-        }
-    
-        get startDate(){
-            return this._startDate;
-        }
-        set startDate(startDate){
-            let date = new Date().toLocaleDateString();
-            if(startDate <= date)
-            {
-                this._startDate = startDate;
-            }
-            else
-            {
-                throw "Invalid Date";
-            }
-        }
-    
-        get notes(){
-            return this._notes;
-        }
-        set notes(notes){
-            this._notes = notes;
-        }
-    
-        toString()
-        {
-            return "Id: " + this.id + ", Name: " + this.name + ", Profile Pic: " + this.profilePic + ", Gender: " + this.gender + 
-            ", Department: " + this.department + ", Salary: " + this.salary + ", StartDate: " + this.startDate + ", Notes: " + this.notes;
-        }
+        message.textContent = "";
+        return;
     }
-}
+    try{
+        (new EmployeePayrollData()).name = name.value;
+        message.textContent = "";
+    }
+    catch(ex){
+        message.textContent = ex;
+    }
+    }); 
+
+    //validate date
+    const date = document.querySelector("#month").value + " " + document.querySelector("#day").value + " " + document.querySelector("#year").value;
+    const dateMessage = document.querySelector('.date-error');
+    date.addEventListener('input', function(){
+        let givenDate = new Date(date);
+        try{
+            (new EmployeePayrollData()).startDate = givenDate;
+            dateMessage.textContent = "";
+        }
+        catch(ex){
+            dateMessage.textContent = ex;
+        }
+    });
+
+    //To display salary slider value
+    const salaryValue = document.querySelector('#salary');
+    const outputValue = document.querySelector('.salary-output');
+    outputValue.textContent = salaryValue.value;
+    salaryValue.addEventListener('input',function(){
+        outputValue.textContent = salaryValue.value;
+    });
+    
+});
