@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded',(event) => {
     }); 
 
     //validate date
-    const date = document.querySelector("#day").value + " " + document.querySelector("#month").value + " " + document.querySelector("#year").value;
+    /*const date = document.querySelector("#day").value + " " + document.querySelector("#month").value + " " + document.querySelector("#year").value;
     const dateMessage = document.querySelector('.date-error');
     date.addEventListener('input', function(){
         let givenDate = new Date(date);
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded',(event) => {
         catch(ex){
             dateMessage.textContent = ex;
         }
-    });
+    });*/
 
     //To display salary slider value
     const salaryValue = document.querySelector('#salary');
@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded',(event) => {
 const save = () =>{
     try{
         let employeePayrollData = createEmployeePayroll();
+        createLocalStorage(employeePayrollData)
     }
     catch (ex){
         return;
@@ -84,5 +85,18 @@ const getSelectedValues = (propertyValue) =>{
     });
     return selectedItems;
 }
-
+//To store data into local storage
+function createLocalStorage(employeePayrollData){
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if(employeePayrollList != undefined)
+    {
+        employeePayrollList.push(employeePayrollData);
+    }
+    else
+    {
+        employeePayrollList = [employeePayrollData];
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+}
 
