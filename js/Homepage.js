@@ -1,25 +1,44 @@
+let employeePayrollList;
+
 window.addEventListener('DOMContentLoaded', (event)=>{
+    employeePayrollList = getEmployeeDateFromLocalStorage();
+    document.querySelector('.employee-count').textContent = employeePayrollList.length;
     createInnerHtml();
 });
 
+const getEmployeeDateFromLocalStorage = () =>{
+    return localStorage.getItem('EmployeePayrollList') ? JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
+
 const createInnerHtml = () =>{
+    //if(employeePayrollList.length == 0) {return;}
     const headerHtml = "<tr class='table-header'><th>Profile Image</th><th>Name</th><th>Gender</th><th>Salary</th><th>Department</th><th>Start Date</th><th>Actions</th></tr>";
-    const innerHtml = `${headerHtml}
-    <tr>
-        <td><img src="../assets/man1.jpg" alt="employee-1"></td>
-        <td>Harish</td>
-        <td>Male</td>
-        <td>50000</td>
-        <td>
-            <div class="department">Engineer</div>
-            <div class="department">Others</div>
-        </td>
-        <td>01 April 2022</td>
-        <td class="actions">
-            <img id="1" onclick="remove(this)" alt="delete" src="../assets/delete.jpg" width="20px" height="20px">
-            <img id="1" onclick="update(this)" alt="update" src="../assets/create.jpg" width="20px" height="20px">
-        </td>
-    </tr>
-    `;
+    let innerHtml = `${headerHtml}`;
+    for(const employeePayrollData of employeePayrollList)
+    {
+        innerHtml = `${innerHtml}
+            <tr>
+                <td><img src="${employeePayrollData._profilePic}" alt=""></td>
+                <td>${employeePayrollData._name}</td>
+                <td>${employeePayrollData._gender}</td>
+                <td>${employeePayrollData._salary}</td>
+                <td>${getDept(employeePayrollData._department)}</td>
+                <td>${employeePayrollData._startDate}</td>
+                <td class="actions">
+                    <img id="${employeePayrollData._id}" onclick="remove(this)" alt="delete" src="../assets/delete.jpg" width="20px" height="20px">
+                    <img id="${employeePayrollData._id}" onclick="update(this)" alt="update" src="../assets/create.jpg" width="20px" height="20px">
+                </td>
+            </tr>
+        `;
+    }
     document.querySelector('#table').innerHTML = innerHtml;
+}
+
+const getDept = (deptList) =>{
+    let dept ='';
+    for(const item of deptList)
+    {
+        dept = `${dept} <div class='department'>${item}</div>`
+    }
+    return dept;
 }
