@@ -1,4 +1,8 @@
+let isUpdate = false;
+let employeePayrollObject = {};
+
 window.addEventListener('DOMContentLoaded',(event) => {
+    
     const name = document.querySelector('#name');
     const message = document.querySelector('.text-error');
     name.addEventListener('input', function(){
@@ -14,6 +18,7 @@ window.addEventListener('DOMContentLoaded',(event) => {
     catch(ex){
         message.textContent = ex;
     }
+    checkForUpdate();
     }); 
 
     //validate date
@@ -40,7 +45,7 @@ window.addEventListener('DOMContentLoaded',(event) => {
     
 });
 
-const save = () =>{
+const save = (event) =>{
     try{
         let employeePayrollData = createEmployeePayroll();
         createLocalStorage(employeePayrollData)
@@ -121,4 +126,46 @@ const unCheckValues = (propertyValue) =>{
    allItems.forEach(item =>{
     item.checked = false;
    });
+}
+
+const checkForUpdate =()=>{
+    const employeePayrollJSON = localStorage.getItem('EmployeePayrollList');
+    isUpdate = employeePayrollJSON ? true : false;
+    if(!isUpdate)return;
+    employeePayrollObject = JSON.parse(employeePayrollJSON);
+    setForm();
+}
+
+const setForm =()=>{
+    setValue('#name', employeePayrollObject._name);
+    setSelectedValue('[name=profile]', employeePayrollObject._profilePic);
+    setSelectedValue('[name=gender]', employeePayrollObject._gender);
+    setSelectedValue('[name=department]', employeePayrollObject._department);
+    setValue('#salary', employeePayrollObject._salary);
+    setTextValue('.salary-output', employeePayrollObject._salary)
+    setValue('#notes', employeePayrollObject._notes);
+    let date = (employeePayrollObject._startDate).split("/");
+    setValue('#day', date[1]);
+    setValue('#month', date[0]);
+    setValue('#year', date[2]);
+}
+
+const setSelectedValue =(propertyValue, value) =>{
+    let allItems = document.querySelectorAll(propertyValue);
+    allItems.forEach(item =>{
+        if(Array.isArray(value))
+        {
+            if(value.includes(item.value))
+            {
+                item.checked = true;
+            }
+        }
+        else
+        {
+            if(item.value ===value)
+            {
+                item.checked = true;
+            }
+        }
+    });
 }

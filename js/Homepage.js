@@ -26,8 +26,8 @@ const createInnerHtml = () =>{
                 <td>${getDept(employeePayrollData._department)}</td>
                 <td>${employeePayrollData._startDate}</td>
                 <td class="actions">
-                    <img id="${employeePayrollData._id}" onclick="remove(this)" alt="delete" src="../assets/delete.jpg" width="20px" height="20px">
-                    <img id="${employeePayrollData._id}" onclick="update(this)" alt="update" src="../assets/create.jpg" width="20px" height="20px">
+                    <img id="${employeePayrollData._name}" onclick="remove(this)" alt="delete" src="../assets/delete.jpg">
+                    <img id="${employeePayrollData._name}" onclick="update(this)" alt="update" src="../assets/create.jpg">
                 </td>
             </tr>
         `;
